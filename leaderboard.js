@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tierlists = document.querySelectorAll('.tierlist');
     const scores = {};
 
-    const allowedUsersDiscordIds = ['673171235273703426', 'DISCORD_ID_2']; // Βάλε τα σωστά Discord IDs
+    const allowedUsersDiscordIds = ['673171235273703426', 'DISCORD_ID_2'];
     let currentUserId = null;
 
     const loginBtn = document.getElementById('loginBtn');
