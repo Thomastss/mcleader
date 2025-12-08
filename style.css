@@ -1,109 +1,102 @@
+/* Γενικά */
 body {
-    background-color: #f0f4f8;
+    background: linear-gradient(135deg, #eef2f3, #8e9eab);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
     margin: 0;
     padding: 0;
-    color: #333;
 }
 
 .container {
-    width: 95%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1000px;
     margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffffcc;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Headers */
 h1, h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-weight: 700;
+    color: #2c3e50;
 }
 
-#loginBtn {
-    display: block;
-    margin: 0 auto 20px auto;
-    padding: 12px 20px;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #89f7fe, #66a6ff);
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#searchPlayer {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    margin: 0 auto 30px auto;
-    display: block;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
+/* Leaderboard */
 .leaderboard {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 50px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .leaderboard th {
-    background: linear-gradient(90deg, #89f7fe, #66a6ff);
-    color: #1a1a1a;
-    font-weight: bold;
-    padding: 14px;
+    background: linear-gradient(90deg, #b0b0b0, #e0e0e0); /* γκρι gradient */
+    color: #333; /* σκούρο για contrast */
+    padding: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-align: center;
 }
 
 .leaderboard td {
-    padding: 12px;
+    padding: 14px;
     text-align: center;
     border-bottom: 1px solid #d0d0d0;
+    font-weight: 500;
 }
 
-tr:nth-child(even) { background-color: #f5f5f5; }
-tr:hover { background-color: #cceeff; transition: background 0.3s; }
-
-.tierlists-container {
-    display: flex;
-    flex-direction: column; /* Τα βάζει το ένα κάτω από το άλλο */
-    align-items: center;    /* Κεντράρει τις λίστες οριζόντια */
-    gap: 30px;              /* Αποστάσεις μεταξύ των tierlists */
+.leaderboard tr:nth-child(even) td {
+    background-color: #f2f2f2; /* ανοιχτό γκρι */
 }
 
-.tierlist-section {
-    width: 80%;             /* Πιο ευρύ για κάθε λίστα */
-    max-width: 600px;
+.leaderboard tr:nth-child(odd) td {
+    background-color: #ffffff; /* λευκό για εναλλαγή */
 }
 
+.leaderboard tr:hover td {
+    background-color: #d9d9d9; /* hover πιο σκούρο γκρι */
+    transition: 0.3s;
+}
 
+.top1 td {
+    background: linear-gradient(90deg, #cfcfcf, #eaeaea); /* highlight πρώτου σε ανοιχτό γκρι */
+    font-weight: 700;
+    color: #222;
+}
+
+/* Tierlists */
 .tierlists ul {
     list-style: none;
     padding: 0;
+    margin-bottom: 30px;
+    width: 100%;
 }
 
 .tierlists li {
-    background-color: #e6f0fa;
-    margin: 5px 0;
+    background-color: #d9d9d9; /* γκρι απαλό */
+    color: #333;               /* σκούρο για contrast */
+    margin: 5px 0;             /* κάθε li από κάτω του */
     padding: 10px 15px;
     border-radius: 8px;
-    cursor: move;
-    transition: all 0.3s;
+    font-weight: 500;
+    transition: background 0.2s;
 }
 
 .tierlists li:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #66a6ff;
+    background-color: #c0c0c0; /* λίγο πιο σκούρο στο hover */
 }
 
-.tierlists li.dragging {
-    opacity: 0.5;
-}
-
-.leaderboard tr.top1 td {
-    background-color: #00ffff;
-    color: #000;
-    font-weight: bold;
-    box-shadow: 0 0 10px #00ffff;
+/* Responsive για μικρές οθόνες */
+@media (max-width: 600px) {
+    .tierlists li {
+        width: 100%;
+        text-align: left;
+    }
 }

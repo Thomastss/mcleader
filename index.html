@@ -1,103 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Leaderboard</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Overall Best Skills</h1>
-    <button id="loginBtn">Login with Discord</button>
-    <input type="text" id="searchPlayer" placeholder="Search player..." style="display:none;">
+    <div class="container">
+        <h1>Overall Best Skills</h1>
+        <table class="leaderboard" id="overallLeaderboard">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- JS θα γεμίσει εδώ -->
+            </tbody>
+        </table>
 
-    <table class="leaderboard" id="overallLeaderboard" style="display:none;">
-        <thead>
-            <tr>
-                <th>Player</th>
-                <th>Points</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Filled by JS -->
-        </tbody>
-    </table>
-
-    <div class="tierlists-container" style="display:none;">
-        <div class="tierlist-section">
+        <div class="tierlists">
             <h2>Mace Tierlist</h2>
-            <ul class="tierlist" id="maceTier">
-                <li draggable="true">Leo</li>
-                <li draggable="true">Thomas</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">Aggelos</li>
+            <ul id="maceTier">
+                <li>Leo</li>
+                <li>Thomas</li>
+                <li>Nikas</li>
+                <li>Aggelos</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>Sword Tierlist</h2>
-            <ul class="tierlist" id="swordTier">
-                <li draggable="true">Thomas</li>
-                <li draggable="true">Leo</li>
-                <li draggable="true">Aggelos</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">🤥</li>
-                <li draggable="true">Stamos</li>
+            <ul id="swordTier">
+                <li>Thomas</li>
+                <li>Leo</li>
+                <li>Nikas</li>
+                <li>Aggelos</li>
+                <li>Nikos</li>
+                <li>Stamos</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>Axe Tierlist</h2>
-            <ul class="tierlist" id="axeTier">
-                <li draggable="true">Leo</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">Thomas</li>
-                <li draggable="true">🤥</li>
-                <li draggable="true">Aggelos</li>
-                <li draggable="true">Stamos</li>
+            <ul id="axeTier">
+                <li>Leo</li>
+                <li>Nikas</li>
+                <li>Thomas</li>
+                <li>Nikos</li>
+                <li>Aggelos</li>
+                <li>Stamos</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>SMP Tierlist</h2>
-            <ul class="tierlist" id="smpTier">
-                <li draggable="true">Leo</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">Thomas</li>
-                <li draggable="true">Aggelos</li>
+            <ul id="smpTier">
+                <li>Leo</li>
+                <li>Nikas</li>
+                <li>Thomas</li>
+                <li>Aggelos</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>Neth POT</h2>
-            <ul class="tierlist" id="nethPot">
-                <li draggable="true">Leo</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">Thomas</li>
+            <ul id="nethPot">
+                <li>Leo</li>
+                <li>Nikas</li>
+                <li>Thomas</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>End Crystal</h2>
-            <ul class="tierlist" id="endCrystal">
-                <li draggable="true">Aggelos</li>
-                <li draggable="true">Leo</li>
-                <li draggable="true">Thomas</li>
+            <ul id="endCrystal">
+                <li>Aggelos</li>
+                <li>Leo</li>
+                <li>Thomas</li>
             </ul>
-        </div>
 
-        <div class="tierlist-section">
             <h2>UHC Tierlist</h2>
-            <ul class="tierlist" id="uhcTier">
-                <li draggable="true">Thomas</li>
-                <li draggable="true">Leo</li>
-                <li draggable="true">Nikas</li>
-                <li draggable="true">Aggelos</li>
+            <ul id="uhcTier">
+                <li>Thomas</li>
+                <li>Leo</li>
+                <li>Nikas</li>
+                <li>Aggelos</li>
             </ul>
         </div>
     </div>
-</div>
 
-<script src="leaderboard.js"></script>
+    <script src="leaderboard.js"></script>
 </body>
 </html>
