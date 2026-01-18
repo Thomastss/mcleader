@@ -247,7 +247,7 @@ li:hover .rank {
 .title-axe     { color: #00ffff !important; text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); } /* Cyan */
 .title-smp     { color: #800080 !important; text-shadow: 0 0 15px rgba(128, 0, 128, 0.5); } /* Purple */
 .title-pot     { color: #dc143c !important; text-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } /* Red pros Purple (Crimson) */
-.title-crystal { color: #ff1493 !important; text-shadow: 0 0 15px rgba(255, 20, 147, 0.5); } /* Pink pros Purple (DeepPink) */
+.title-vanilla { color: #ff1493 !important; text-shadow: 0 0 15px rgba(255, 20, 147, 0.5); } /* Pink pros Purple (DeepPink) */
 .title-uhc     { color: #ffd700 !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); } /* Gold */
 
 /* Διόρθωση για να μην το χαλάει η JavaScript που φτιάχνει το div/wrapper */
@@ -320,6 +320,8 @@ li::before { content: "⚡"; margin-right: 8px; }
 .rounds::before { content: "🎯"; }
 .mcpvp::before { content: "🌐"; }
 .health::before { content: "❤️"; }
+.cheats::before { content: "🚫"; }
+.challenge::before { content: "🔥"; }
 .crown::before { content: "👑"; margin-right: 5px; }
 
 /* ==========================================================================
@@ -335,7 +337,7 @@ li::before { content: "⚡"; margin-right: 8px; }
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  transition: transform 0.3s, opacity 0.18s;
+  transition: transform 0.3s, opacity 0.18s;  
   color: var(--text);
 }
 
@@ -349,7 +351,7 @@ li::before { content: "⚡"; margin-right: 8px; }
 .mace    { background-color: #2f502f; border: 2px solid #33ff33; }
 .pot     { background-color: #502f50; border: 2px solid #ff33ff; }
 .nethpot { background-color: #2f5050; border: 2px solid #33ffff; }
-.crystal { background-color: #50502f; border: 2px solid #ffff33; }
+.vanilla { background-color: #50502f; border: 2px solid #ffff33; }
 .uhc     { background-color: #505050; border: 2px solid #9999ff; }
 .smp     { background-color: #403020; border: 2px solid #ffcc66; }
 

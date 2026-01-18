@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'axeTier',
         'smpTier',
         'nethPot',
-        'endCrystal',
+        'vanillaTier',
         'uhcTier'
     ];
   
-    const avatarFolder = 'avatars/'; // ✅ ΜΟΝΟ ΕΔΩ, ΜΙΑ ΦΟΡΑ
+    const avatarFolder = 'img/avatars/'; // ✅ ΜΟΝΟ ΕΔΩ, ΜΙΑ ΦΟΡΑ
   
   
     /* ================================
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ul || !ul.id) return;
   
         const img = document.createElement('img');
-        img.src = `img/${ul.id}.png`;
+        img.src = `img/tier/${ul.id}.png`;
         img.width = 50;
         img.height = 50;
         img.style.borderRadius = '50%';
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         axe: "axeTier",
         smp: "smpTier",
         neth_pot: "nethPot",
-        end_crystal: "endCrystal",
+        end_crystal: "vanillaTier",
         uhc: "uhcTier"
     };
   
