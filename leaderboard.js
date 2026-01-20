@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         axe: "axeTier",
         smp: "smpTier",
         pot: 'potTier',
-        neth_pot: "nethPot",
-        end_crystal: "vanillaTier",
+        nethop: "nethPot",
+        endcrystal: "vanillaTier",
         uhc: "uhcTier"
     };
   
