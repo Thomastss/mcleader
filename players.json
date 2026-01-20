@@ -1,27 +1,39 @@
 [
   {
     "name": "Leo",
-    "uuid": "0ea60c36-a299-4cc8-aeaa-a8b0bddea312"
+    "uuid": "0ea60c36-a299-4cc8-aeaa-a8b0bddea312",
+    "color": "lime",
+    "emoji": "🥝"
   },
   {
     "name": "Thomas",
-    "uuid": "c276a75a-59a0-4151-91c6-18042ee00173"
+    "uuid": "c276a75a-59a0-4151-91c6-18042ee00173",
+    "color": "cyan",
+    "emoji": "🖥️"
   },
   {
     "name": "Nikas",
-    "uuid": "93cc9ed4-e6ed-45c0-a93f-1f3331ad2f1a"
+    "uuid": "93cc9ed4-e6ed-45c0-a93f-1f3331ad2f1a",
+    "color": "red",
+    "emoji": "🛡️"
   },
   {
     "name": "Aggelos",
-    "uuid": "bb21bb9a-2702-46dd-b213-16f8c18657b0"
+    "uuid": "bb21bb9a-2702-46dd-b213-16f8c18657b0",
+    "color": "violet",
+    "emoji": "🍩"
   },
   {
     "name": "Nikos",
-    "uuid": "c20cf669-02e2-4912-ac0e-523336f85cde"
+    "uuid": "c20cf669-02e2-4912-ac0e-523336f85cde",
+    "color": "gray",
+    "emoji": "🔥"
   },
   {
     "name": "Stamos",
-    "uuid": "72ff029e-619e-4412-9bc8-b0e21495130b"
+    "uuid": "72ff029e-619e-4412-9bc8-b0e21495130b",
+    "color": "yellow",
+    "emoji": "💎"
   }
 ]
   
