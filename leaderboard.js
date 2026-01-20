@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'swordTier',
         'axeTier',
         'smpTier',
+        'potTier',
         'nethPot',
         'vanillaTier',
         'uhcTier'
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sword: "swordTier",
         axe: "axeTier",
         smp: "smpTier",
+        pot: 'potTier',
         neth_pot: "nethPot",
         end_crystal: "vanillaTier",
         uhc: "uhcTier"

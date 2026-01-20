@@ -246,7 +246,8 @@ li:hover .rank {
 .title-sword   { color: #0077ff !important; text-shadow: 0 0 15px rgba(0, 119, 255, 0.5); } /* Blue */
 .title-axe     { color: #00ffff !important; text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); } /* Cyan */
 .title-smp     { color: #800080 !important; text-shadow: 0 0 15px rgba(128, 0, 128, 0.5); } /* Purple */
-.title-pot     { color: #dc143c !important; text-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } /* Red pros Purple (Crimson) */
+.title-pot     { color: #ffcc00 !important; text-shadow: 0 0 15px rgba(225, 215, 60, 0.5); } /* Red pros Purple (Crimson) */
+.title-nethpot     { color: #dc143c !important; text-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } /* Red pros Purple (Crimson) */
 .title-vanilla { color: #ff1493 !important; text-shadow: 0 0 15px rgba(255, 20, 147, 0.5); } /* Pink pros Purple (DeepPink) */
 .title-uhc     { color: #ffd700 !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); } /* Gold */
 
@@ -346,14 +347,14 @@ li::before { content: "⚡"; margin-right: 8px; }
 .rounds { margin-top: 10px; font-weight: 600; color: var(--accent-2); }
 
 /* Kit color variants */
-.sword   { background-color: #2f2f50; border: 2px solid #ffcc00; }
-.axe     { background-color: #502f2f; border: 2px solid #ff9900; }
-.mace    { background-color: #2f502f; border: 2px solid #33ff33; }
-.pot     { background-color: #502f50; border: 2px solid #ff33ff; }
-.nethpot { background-color: #2f5050; border: 2px solid #33ffff; }
-.vanilla { background-color: #50502f; border: 2px solid #ffff33; }
-.uhc     { background-color: #505050; border: 2px solid #9999ff; }
-.smp     { background-color: #403020; border: 2px solid #ffcc66; }
+.sword { background-color: #1a2a40; border: 2px solid #00aaff; } 
+.axe { background-color: #1a4040; border: 2px solid #00ffff; } 
+.mace { background-color: #2a2a2a; border: 2px solid #a335ee; } 
+.pot { background-color: #401a1a; border: 2px solid #ff4444; } 
+.nethpot { background-color: #3b1a30; border: 2px solid #c71585; } 
+.vanilla { background-color: #301a40; border: 2px solid #ff00ff; } 
+.uhc { background-color: #40351a; border: 2px solid #ffcc00; } 
+.smp { background-color: #2a1a40; border: 2px solid #9933ff; }
 
 .kit-card:hover { transform: translateY(-5px); opacity: 0.95; }
 
