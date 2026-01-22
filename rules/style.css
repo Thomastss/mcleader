@@ -1,0 +1,159 @@
+/* ==========================================================================
+1. VARIABLES & GOOGLE FONTS
+========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+
+:root {
+  --bg: #1e1e1e;
+  --panel: #2c2c2c;
+  --panel-dark: #2e2e2e;
+  --muted: #3a3a3a;
+  --accent: #ffd700;
+  --accent-2: #ffdd55;
+  --text: #f0f0f0;
+  --border: #444;
+  --shadow: rgba(0,0,0,0.6);
+}
+
+/* ==========================================================================
+2. RESET & BASE STYLES
+========================================================================== */
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ensures footer sticks to bottom */
+}
+
+/* ==========================================================================
+3. LAYOUT CONTAINERS
+========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1010px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: var(--panel);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow);
+  flex: 1 0 auto; /* lets .container grow and push footer down */
+}
+
+main { flex: 1 0 auto; }
+
+/* ==========================================================================
+4. NAVIGATION (NAVBAR)
+========================================================================== */
+nav {
+  width: 100%;
+  background-color: var(--panel);
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+nav img { height: 50px; }
+
+nav .links { display: flex; gap: 25px; align-items: center; }
+
+nav .links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  transition: color .18s ease;
+}
+
+nav .links a:hover { color: var(--accent); }
+
+/* ==========================================================================
+5. HEADINGS
+========================================================================== */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+h1 { color: var(--accent); }
+h2 { color: var(--accent-2); }
+
+/* Rules & sections */
+.section { margin-bottom: 35px; }
+p, li { font-size: 18px; line-height: 1.8; }
+ul { padding-left: 20px; }
+
+.highlight { color: var(--accent); font-weight: 700; }
+
+
+/* ==========================================================================
+11. FOOTER
+========================================================================== */
+footer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding: 20px 40px;
+  background-color: var(--panel);
+  color: var(--text);
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid var(--border);
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer p {
+  color: white; 
+  margin: 0; 
+  font-weight: 800; 
+  font-size: 18px;
+  letter-spacing: -0.5px; 
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.discord-icon {
+  height: 45px;
+  width: auto;
+  transition: transform 0.2s;
+}
+
+.mctiers-icon {
+  height: 30px;
+  width: auto;
+  transition: transform 0.2s;
+}
+
+.discord-icon:hover, .mctiers-icon:hover {
+  transform: scale(1.1);
+}
+/* ==========================================================================

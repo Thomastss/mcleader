@@ -34,6 +34,24 @@
     "uuid": "72ff029e-619e-4412-9bc8-b0e21495130b",
     "color": "yellow",
     "emoji": "💎"
+  },
+  {
+    "name": "Xrisa",
+    "uuid": "56196481-e353-44ae-972f-b42841381336",
+    "color": "pink",
+    "emoji": "🌸"
+  },
+  {
+    "name": "Mhnas",
+    "uuid": "69b7f6e0-2ccb-4479-b1b1-14103045358b",
+    "color": "lightgray",
+    "emoji": "🔨"
+  },
+  {
+    "name": "Giorgos",
+    "uuid": "b493f113-1d6b-459e-b1ce-d415a8db824d",
+    "color": "orange",
+    "emoji": "🟠"
   }
 ]
   

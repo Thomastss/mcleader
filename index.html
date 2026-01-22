@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>MC Leaderboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="img/icon.png">
     
     <meta name="theme-color" content="#FFD700">
 
@@ -24,10 +24,10 @@
     <nav>
         <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
         <div class="links">
-        <a href="rules.html">Rules</a>
-        <a href="kits.html">Kits</a>
+            <a href="/mods/">Mods</a>
         </div>
     </nav>
+
     <div class="container">
         <h1>Overall Best Skills</h1>
         <table class="leaderboard" id="overallLeaderboard">
@@ -38,79 +38,179 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- JS θα γεμίσει εδώ -->
             </tbody>
         </table>
 
-        <div class="tierlists">
-            <h2 class="title-mace">Mace Tierlist</h2>
-            <ul id="maceTier">
+        <div class="info-section-wrapper">
+            <button id="infoBtn" class="info-btn-static">
+                <span class="info-icon">i</span> INFO & RULES
+            </button>
+        </div>
+        <div id="infoModal" class="modal-overlay">
+            <div class="modal-box">
+                <span class="close-btn">&times;</span>
+                
+                <div class="modal-header">
+                    <h2>📜 Rules & Points</h2>
+                </div>
+        
+                <div class="modal-body">
+                    <section class="info-block">
+                        <h3>🍵1v1 Rules for Certain Kits</h3>
+                        <ul>
+                            <li><b>Both players select the kit</b> for the 1v1.</li>
+                            <li>Play <b>best of 3</b> on all kits except for <b>Sword(6)</b> and <b>Axe(10)</b>.</li>
+                            <li>You can <b>only</b> play in the <b>mcpvp.club</b></li>
+                            <li>For the 1v1 to count for the tierlist, <b">Leo</b>or <b>Thomas</b> must be present.</li>
+                            <li>Health must be <b>expect for Axe Duel</b>.</li>
+                            <li>No Cheats that give u an edge over ur opponent.</li>
+                            <li>You have the right to challenge anyone</li>
+                        </ul>
+                    </section>
+                    <section class="info-block">
+                        <h3>💎 Points System</h3>
+                        <div class="pts-grid">
+                            <div class="pts-row"><span>1st Place</span> <strong>1000 PTS</strong></div>
+                            <div class="pts-row"><span>2nd Place</span> <strong>750 PTS</strong></div>
+                            <div class="pts-row"><span>3rd Place</span> <strong>500 PTS</strong></div>
+                            <div class="pts-row"><span>4th Place and under</span> <strong>100 PTS</strong></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 40px 0;">
+
+        <div class="tier-navigation">
+            <button class="tier-btn active" onclick="showTier('maceTier')">
+                <img src="img/tier/maceTier.png" alt="Mace"> Mace
+            </button>
+            <button class="tier-btn" onclick="showTier('swordTier')">
+                <img src="img/tier/swordTier.png" alt="Sword"> Sword
+            </button>
+            <button class="tier-btn" onclick="showTier('axeTier')">
+                <img src="img/tier/axeTier.png" alt="Axe"> Axe
+            </button>
+            <button class="tier-btn" onclick="showTier('smpTier')">
+                <img src="img/tier/smpTier.png" alt="SMP"> SMP
+            </button>
+            <button class="tier-btn" onclick="showTier('potTier')">
+                <img src="img/tier/potTier.png" alt="Pot"> Pot
+            </button>
+            <button class="tier-btn" onclick="showTier('nethPot')">
+                <img src="img/tier/nethPot.png" alt="NethOP"> NethPot
+            </button>
+            <button class="tier-btn" onclick="showTier('vanillaTier')">
+                <img src="img/tier/vanillaTier.png" alt="Vanilla"> Vanilla
+            </button>
+            <button class="tier-btn" onclick="showTier('uhcTier')">
+                <img src="img/tier/uhcTier.png" alt="UHC"> UHC
+            </button>
+        </div>
+    
+
+        <div class="tierlist-display">
+            <ul id="maceTier" class="tier-content active">
                 <li>Leo <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
 
-            <h2 class="title-sword">Sword Tierlist</h2>
-            <ul id="swordTier">
+            <ul id="swordTier" class="tier-content">
                 <li>Thomas <span class="rank"></span></li>
                 <li>Leo <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
 
-            <h2 class="title-axe">Axe Tierlist</h2>
-            <ul id="axeTier">
+            <ul id="axeTier" class="tier-content">
                 <li>Leo <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
 
-            <h2 class="title-smp">SMP Tierlist</h2>
-            <ul id="smpTier">
+            <ul id="smpTier" class="tier-content">
                 <li>Leo <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
             
-            <h2 class="title-pot">POT Tierlist</h2>
-            <ul id="potTier">
+            <ul id="potTier" class="tier-content">
                 <li>Thomas <span class="rank"></span></li>
                 <li>Leo <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
             
-            <h2 class="title-nethpot">Neth POT</h2>
-            <ul id="nethPot">
+            <ul id="nethPot" class="tier-content">
                 <li>Leo <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
 
-            <h2 class="title-vanilla">Vanilla</h2>
-            <ul id="vanillaTier">
+            <ul id="vanillaTier" class="tier-content">
                 <li>Aggelos <span class="rank"></span></li>
                 <li>Leo <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
 
-            <h2 class="title-uhc">UHC Tierlist</h2>
-            <ul id="uhcTier">
+            <ul id="uhcTier" class="tier-content">
                 <li>Leo <span class="rank"></span></li>
                 <li>Thomas <span class="rank"></span></li>
                 <li>Nikas <span class="rank"></span></li>
                 <li>Aggelos <span class="rank"></span></li>
+                <li>Nikos <span class="rank"></span></li>
+                <li>Stamos <span class="rank"></span></li>
+                <li>Giorgos <span class="rank"></span></li>
+                <li>Xrisa <span class="rank"></span></li>
+                <li>Mhnas <span class="rank"></span></li>
             </ul>
         </div>
     </div>
 
     <footer>
-        <p>Created with 🩵 by Thomas &copy; 2025-2026</p>
+        <a href="http://thomasts.site"><p>Created with 🩵 by Thomas &copy; 2025-2026</p></a>
         <div class="footer-links">
             <a href="https://discord.gg/vqFsvuVTWf" target="_blank">
                 <img src="img/discord.png" alt="Discord" class="discord-icon">
@@ -120,6 +220,31 @@
             </a>
         </div>
     </footer>
-<script src="leaderboard.js"></script>
+
+<script src="main.js"></script>
+<script src="mctiers.js"></script>
+<script>
+    function showTier(tierId) {
+        // 1. Remove 'active' class from all buttons
+        document.querySelectorAll('.tier-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 2. Hide all tier lists
+        document.querySelectorAll('.tier-content').forEach(list => {
+            list.classList.remove('active');
+        });
+
+        // 3. Show the selected list
+        const selectedList = document.getElementById(tierId);
+        if (selectedList) {
+            selectedList.classList.add('active');
+        }
+
+        // 4. Highlight the clicked button
+        const clickedBtn = event.currentTarget;
+        clickedBtn.classList.add('active');
+    }
+</script>
 </body>
 </html>
