@@ -21,6 +21,10 @@
     <meta name="twitter:image" content="http://thomakosmc.eu/img/title.png">
 </head>
 <body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Loading Player Data...</p>
+    </div>
     <nav>
         <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
         <div class="links">
@@ -61,8 +65,8 @@
                             <li><b>Both players select the kit</b> for the 1v1.</li>
                             <li>Play <b>best of 3</b> on all kits except for <b>Sword(6)</b> and <b>Axe(10)</b>.</li>
                             <li>You can <b>only</b> play in the <b>mcpvp.club</b></li>
-                            <li>For the 1v1 to count for the tierlist, <b">Leo</b>or <b>Thomas</b> must be present.</li>
-                            <li>Health must be <b>expect for Axe Duel</b>.</li>
+                            <li>For the 1v1 to count for the tierlist, <b>Leo</b> or <b>Thomas</b> must be present.</li>
+                            <li>Health must be <b>except for Axe Duel</b>.</li>
                             <li>No Cheats that give u an edge over ur opponent.</li>
                             <li>You have the right to challenge anyone</li>
                         </ul>
@@ -83,28 +87,28 @@
         <hr style="border: 0; border-top: 1px solid var(--border); margin: 40px 0;">
 
         <div class="tier-navigation">
-            <button class="tier-btn active" onclick="showTier('maceTier')">
+            <button class="tier-btn active" onclick="showTier('maceTier', this)">
                 <img src="img/tier/maceTier.png" alt="Mace"> Mace
             </button>
-            <button class="tier-btn" onclick="showTier('swordTier')">
+            <button class="tier-btn" onclick="showTier('swordTier', this)">
                 <img src="img/tier/swordTier.png" alt="Sword"> Sword
             </button>
-            <button class="tier-btn" onclick="showTier('axeTier')">
+            <button class="tier-btn" onclick="showTier('axeTier', this)">
                 <img src="img/tier/axeTier.png" alt="Axe"> Axe
             </button>
-            <button class="tier-btn" onclick="showTier('smpTier')">
+            <button class="tier-btn" onclick="showTier('smpTier', this)">
                 <img src="img/tier/smpTier.png" alt="SMP"> SMP
             </button>
-            <button class="tier-btn" onclick="showTier('potTier')">
+            <button class="tier-btn" onclick="showTier('potTier', this)">
                 <img src="img/tier/potTier.png" alt="Pot"> Pot
             </button>
-            <button class="tier-btn" onclick="showTier('nethPot')">
+            <button class="tier-btn" onclick="showTier('nethPot', this)">
                 <img src="img/tier/nethPot.png" alt="NethOP"> NethPot
             </button>
-            <button class="tier-btn" onclick="showTier('vanillaTier')">
+            <button class="tier-btn" onclick="showTier('vanillaTier', this)">
                 <img src="img/tier/vanillaTier.png" alt="Vanilla"> Vanilla
             </button>
-            <button class="tier-btn" onclick="showTier('uhcTier')">
+            <button class="tier-btn" onclick="showTier('uhcTier', this)">
                 <img src="img/tier/uhcTier.png" alt="UHC"> UHC
             </button>
         </div>
@@ -222,29 +226,5 @@
     </footer>
 
 <script src="main.js"></script>
-<script src="mctiers.js"></script>
-<script>
-    function showTier(tierId) {
-        // 1. Remove 'active' class from all buttons
-        document.querySelectorAll('.tier-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-
-        // 2. Hide all tier lists
-        document.querySelectorAll('.tier-content').forEach(list => {
-            list.classList.remove('active');
-        });
-
-        // 3. Show the selected list
-        const selectedList = document.getElementById(tierId);
-        if (selectedList) {
-            selectedList.classList.add('active');
-        }
-
-        // 4. Highlight the clicked button
-        const clickedBtn = event.currentTarget;
-        clickedBtn.classList.add('active');
-    }
-</script>
 </body>
 </html>

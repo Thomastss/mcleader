@@ -2,9 +2,12 @@
     { "id": "appleskin" },
     { "id": "centered-crosshair" },
     { "id": "jade" },
-    { "id": "shield-status" },
+    { "id": "shield-statuses" },
     { "id": "marlow-crystal-optimizer" },
     { "id": "statuseffecttimer" },
     { "id": "totemcounter" },
-    { "id": "ukus-armor-hud" }
+    { "id": "ukus-armor-hud" },
+    { "id": "low-on-fire" },
+    { "id": "low-shield-pack" },
+    { "id": "unique-dark" }
   ]

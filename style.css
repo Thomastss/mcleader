@@ -1,974 +1,1026 @@
-/* ==========================================================================
-1. VARIABLES & GOOGLE FONTS
-========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
+  /* ==========================================================================
+  1. VARIABLES & GOOGLE FONTS
+  ========================================================================== */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap');
 
-:root {
-  --bg: #1e1e1e;
-  --panel: #2c2c2c;
-  --panel-dark: #2e2e2e;
-  --muted: #3a3a3a;
-  --accent: #ffd700;
-  --accent-2: #ffdd55;
-  --text: #f0f0f0;
-  --border: #444;
-  --shadow: rgba(0,0,0,0.6);
-}
+  :root {
+    --bg: #1e1e1e;
+    --panel: #2c2c2c;
+    --panel-dark: #2e2e2e;
+    --muted: #3a3a3a;
+    --accent: #ffd700;
+    --accent-2: #ffdd55;
+    --text: #f0f0f0;
+    --border: #444;
+    --shadow: rgba(0,0,0,0.6);
+  }
 
-/* ==========================================================================
-2. RESET & BASE STYLES
-========================================================================== */
-* { box-sizing: border-box; }
+  /* ==========================================================================
+  2. RESET & BASE STYLES
+  ========================================================================== */
+  * { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* ensures footer sticks to bottom */
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ensures footer sticks to bottom */
+  }
 
-/* ==========================================================================
-3. LAYOUT CONTAINERS
-========================================================================== */
-.container {
-  width: 100%;
-  max-width: 1010px;
-  margin: 40px auto;
-  padding: 25px;
-  background-color: var(--panel);
-  border-radius: 15px;
-  box-shadow: 0 10px 30px var(--shadow);
-  flex: 1 0 auto; /* lets .container grow and push footer down */
-}
+  /* ==========================================================================
+  3. LAYOUT CONTAINERS
+  ========================================================================== */
+  .container {
+    width: 100%;
+    max-width: 1010px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: var(--panel);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    flex: 1 0 auto; /* lets .container grow and push footer down */
+  }
 
-main { flex: 1 0 auto; }
+  main { flex: 1 0 auto; }
 
-/* ==========================================================================
-4. NAVIGATION (NAVBAR)
-========================================================================== */
-nav {
-  width: 100%;
-  background-color: var(--panel);
-  padding: 15px 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px solid var(--border);
-  box-sizing: border-box;
-  position: sticky;
-  top: 0;
-  z-index: 40;
-}
+  /* ==========================================================================
+  4. NAVIGATION (NAVBAR)
+  ========================================================================== */
+  nav {
+    width: 100%;
+    background-color: var(--panel);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--border);
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+  }
 
-nav img { height: 50px; }
+  nav img { height: 50px; }
 
-nav .links { display: flex; gap: 25px; align-items: center; }
+  nav .links { display: flex; gap: 25px; align-items: center; }
 
-nav .links a {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 600;
-  transition: color .18s ease;
-}
+  nav .links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: color .18s ease;
+  }
 
-nav .links a:hover { color: var(--accent); }
+  nav .links a:hover { color: var(--accent); }
 
-/* ==========================================================================
-5. HEADINGS
-========================================================================== */
-h1, h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-}
+  /* ==========================================================================
+  5. HEADINGS
+  ========================================================================== */
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  }
 
-h1 { color: var(--accent); }
-h2 { color: var(--accent-2); }
+  h1 { color: var(--accent); }
+  h2 { color: var(--accent-2); }
 
-/* ==========================================================================
-6. LEADERBOARD TABLE (MCTIERS STYLE - UPDATED)
-========================================================================== */
-.leaderboard {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 12px; /* Κενό ανάμεσα στις κάρτες */
-  margin-bottom: 50px;
-  display: table; /* Διασφάλιση σωστής συμπεριφοράς table */
-}
+  /* ==========================================================================
+  6. LEADERBOARD TABLE (MCTIERS STYLE - UPDATED)
+  ========================================================================== */
+  .leaderboard {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px; /* Κενό ανάμεσα στις κάρτες */
+    margin-bottom: 50px;
+    display: table; /* Διασφάλιση σωστής συμπεριφοράς table */
+  }
 
-/* Επικεφαλίδες */
-.leaderboard th {
-  background-color: transparent;
-  color: #666;
-  padding: 0 20px 10px 20px;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 700;
-  text-align: left;
-}
+  /* Επικεφαλίδες */
+  .leaderboard th {
+    background-color: transparent;
+    color: #666;
+    padding: 0 20px 10px 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+  }
 
-/* Η σειρά ως ενιαίο Box */
-.leaderboard tr.leaderboard-row {
-  min-height: 100px;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 110%; /* Εξασφαλίζει ότι πιάνει όλο το πλάτος */
-  background-color: var(--panel-dark);
-  transition: transform 0.2s, background-color 0.2s;
-  cursor: pointer;
-  display: flex; /* Flexbox για τέλεια ευθυγράμμιση */
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  margin-bottom: 12px;
-  overflow: hidden;
-}
-
-/* Cells */
-.leaderboard tr.leaderboard-row td {
-  border: none !important;
-  padding: 15px 20px;
-}
-
-/* Αριστερή πλευρά: Player Info */
-.player-info-cell {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex: 1;
-}
-
-/* Δεξιά πλευρά: Ranks */
-.player-ranks-cell {
-  flex: 2;
-  display: flex;
-  justify-content: flex-end;
-}
-
-/* --- TOP 1 SPECIAL DESIGN (GOLDEN STYLE) --- */
-.leaderboard tr.top1 {
-  border-color: var(--accent) !important;
-  /* Ενιαίο gradient που καλύπτει όλο το box */
-  background: linear-gradient(90deg, #2c2c2c 0%, #3d3500 100%) !important;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
-}
-
-.top1 .rank-number {
-  color: var(--accent) !important;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.top1 .player-name {
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-/* --- Λεπτομέρειες Παίκτη --- */
-.rank-number {
-  font-family: 'Inter', sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  color: #444;
-  min-width: 45px;
-  text-align: center;
-}
-
-.player-avatar {
-  width: 55px;
-  height: 55px;
-  border-radius: 10px;
-  object-fit: cover;
-  background: #111;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-}
-
-.player-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.player-name {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.player-stats-sub {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pts-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #00d4ff;
-}
-
-.master-badge, .expert-badge, .pro-badge, .noob-badge {
-  font-size: 10px;
-  font-weight: 900;
-  padding: 2px 8px;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.master-badge {
-  background: var(--accent);
-  color: #000;
-  box-shadow: 0 0 12px var(--accent);
-  animation: pulse-glow 2s infinite;
-}
-
-.expert-badge {
-  background: #333;
-  color: #bbb;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.pro-badge {
-  background: #333;
-  color: #ddd;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.noob-badge {
-  background: #333;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* --- Gamemode Rank Boxes (Mctiers Style) --- */
-.ranks-container {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.mode-rank-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 8px;
-  border-radius: 10px;
-  min-width: 55px;
-  height: 58px; /* Σταθερό ύψος για να είναι στοιχισμένα */
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.2s;
-}
-
-.mode-rank-box:hover {
-  background: rgba(0, 0, 0, 0.6);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.mode-rank-box img {
-  width: 26px !important;
-  height: 26px !important;
-  margin-bottom: 4px !important;
-  object-fit: contain;
-}
-
-/* Βασικό στυλ για όλα τα spans στα κουτάκια */
-.mode-rank-box span {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 900;
-  color: whitesmoke;
-}
-
-/* Χρυσό για το #1 */
-.mode-rank-box span[data-rank="#1"] {
-  color: #FFD700; /* Gold */
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
-}
-
-/* Ασημί/Ανοιχτό Γκρι για το #2 */
-.mode-rank-box span[data-rank="#2"] {
-  color: rgb(100, 100, 100); 
-  text-shadow: 0 0 8px rgba(211, 211, 211, 0.5);
-}
-
-/* Καφέ/Χάλκινο για το #3 */
-.mode-rank-box span[data-rank="#3"] {
-  color: #CD7F32; /* Bronze/Brown */
-  text-shadow: 0 0 8px rgba(205, 127, 50, 0.4);
-}
-
-.mode-rank-box.empty {
-  opacity: 0.15;
-  background: transparent;
-}
-
-/* Hover Effects για όλη τη σειρά */
-.leaderboard tr.leaderboard-row:hover {
-  background-color: #2a2a2a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-}
-
-@keyframes pulse-glow {
-  0% { opacity: 0.9; box-shadow: 0 0 5px var(--accent); }
-  50% { opacity: 1; box-shadow: 0 0 20px var(--accent); }
-  100% { opacity: 0.9; box-shadow: 0 0 5px var(--accent); }
-}
-
-/* Responsive για κινητά */
-@media (max-width: 768px) {
+  /* Η σειρά ως ενιαίο Box */
   .leaderboard tr.leaderboard-row {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px;
+    min-height: 100px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 110%; /* Εξασφαλίζει ότι πιάνει όλο το πλάτος */
+    background-color: var(--panel-dark);
+    transition: transform 0.2s, background-color 0.2s;
+    cursor: pointer;
+    display: flex; /* Flexbox για τέλεια ευθυγράμμιση */
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    overflow: hidden;
   }
-  .player-ranks-cell {
-      justify-content: flex-start;
-      margin-top: 15px;
-      width: 100%;
-  }
-  .ranks-container {
-      justify-content: flex-start;
-  }
-}
-/* ==========================================================================
-7. TIERLISTS & RANKING
-========================================================================== */
-.tierlists ul { list-style: none; padding: 0; margin-bottom: 30px; width: 100%; }
 
-.tierlists li {
+  /* Cells */
+  .leaderboard tr.leaderboard-row td {
+    border: none !important;
+    padding: 15px 20px;
+  }
+
+  /* Αριστερή πλευρά: Player Info */
+  .player-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+  }
+
+  /* Δεξιά πλευρά: Ranks */
+  .player-ranks-cell {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* --- TOP 1 SPECIAL DESIGN (GOLDEN STYLE) --- */
+  .leaderboard tr.top1 {
+    border-color: var(--accent) !important;
+    /* Ενιαίο gradient που καλύπτει όλο το box */
+    background: linear-gradient(90deg, #2c2c2c 0%, #3d3500 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  }
+
+  .top1 .rank-number {
+    color: var(--accent) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+
+  .top1 .player-name {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  /* --- Λεπτομέρειες Παίκτη --- */
+  .rank-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: #444;
+    min-width: 45px;
+    text-align: center;
+  }
+
+  .player-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .player-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .player-name {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .player-stats-sub {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pts-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #00d4ff;
+  }
+
+  .master-badge, .expert-badge, .pro-badge, .noob-badge {
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .master-badge {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse-glow 2s infinite;
+  }
+
+  .expert-badge {
+    background: #333;
+    color: #bbb;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .pro-badge {
+    background: #333;
+    color: #ddd;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .noob-badge {
+    background: #333;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* --- Gamemode Rank Boxes (Mctiers Style) --- */
+  .ranks-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .mode-rank-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px;
+    border-radius: 10px;
+    min-width: 55px;
+    height: 58px; /* Σταθερό ύψος για να είναι στοιχισμένα */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s;
+  }
+
+  .mode-rank-box:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .mode-rank-box img {
+    width: 26px !important;
+    height: 26px !important;
+    margin-bottom: 4px !important;
+    object-fit: contain;
+  }
+
+  /* Βασικό στυλ για όλα τα spans στα κουτάκια */
+  .mode-rank-box span {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    color: whitesmoke;
+  }
+
+  /* Χρυσό για το #1 */
+  .mode-rank-box span[data-rank="#1"] {
+    color: #FFD700; /* Gold */
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  }
+
+  /* Ασημί/Ανοιχτό Γκρι για το #2 */
+  .mode-rank-box span[data-rank="#2"] {
+    color: rgb(100, 100, 100); 
+    text-shadow: 0 0 8px rgba(211, 211, 211, 0.5);
+  }
+
+  /* Καφέ/Χάλκινο για το #3 */
+  .mode-rank-box span[data-rank="#3"] {
+    color: #CD7F32; /* Bronze/Brown */
+    text-shadow: 0 0 8px rgba(205, 127, 50, 0.4);
+  }
+
+  .mode-rank-box.empty {
+    opacity: 0.15;
+    background: transparent;
+  }
+
+  /* Hover Effects για όλη τη σειρά */
+  .leaderboard tr.leaderboard-row:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  }
+
+  @keyframes pulse-glow {
+    0% { opacity: 0.9; box-shadow: 0 0 5px var(--accent); }
+    50% { opacity: 1; box-shadow: 0 0 20px var(--accent); }
+    100% { opacity: 0.9; box-shadow: 0 0 5px var(--accent); }
+  }
+
+  /* Responsive για κινητά */
+  @media (max-width: 768px) {
+    .leaderboard tr.leaderboard-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .player-ranks-cell {
+        justify-content: flex-start;
+        margin-top: 15px;
+        width: 100%;
+    }
+    .ranks-container {
+        justify-content: flex-start;
+    }
+  }
+  /* ==========================================================================
+  7. TIERLISTS & RANKING
+  ========================================================================== */
+  .tierlists ul { list-style: none; padding: 0; margin-bottom: 30px; width: 100%; }
+
+  .tierlists li {
+      background-color: var(--muted);
+      color: var(--text);
+      margin: 5px 0;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+  }
+
+  .tierlists li::before {
+    content: attr(data-emoji); /* This pulls from the attribute JS adds */
+    margin-right: 10px;
+  }
+
+  .tierlists li:hover { background-color: #555; transform: translateX(5px); }
+
+  .rank {
+    position: relative;
+    padding: 6px 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: auto;
+    
+    /* Λοξό σχήμα */
+    transform: skewX(-15deg); 
+    background: rgba(0, 0, 0, 0.6); /* Σκούρο background για να "πετάει" το κείμενο */
+    margin-right: 16px;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+  }
+
+  .pts {
+    background-color: rgba(0, 0, 0, 0.6); /* Χρυσό φόντο */
+    color: lightgray; /* Μαύρα γράμματα για αντίθεση */
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 14px;
+    min-width: 80px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+  }
+
+  .position-rank {
+    font-weight: 800;
+    margin-right: 8px;
+    min-width: 35px;
+    display: inline-block;
+    transition: all 0.3s ease; /* Ομαλή μετάβαση */
+    text-shadow: 0 0 0px transparent;
+  }
+
+  /* Όταν κάνεις hover στο li, το position-rank θα κάνει glow */
+  .tier-content li:hover .position-rank {
+    text-shadow: 0 0 8px var(--rank-color); 
+    transform: scale(1.1); 
+    filter: brightness(1.2);
+  } 
+
+  /* Ειδικά χρώματα για HT */
+  .rank-ht {
+    color: #ff4d4d;
+    border-left-color: #ff4d4d;
+    box-shadow: -10px 0 15px -10px rgba(255, 77, 77, 0.5);
+    background: linear-gradient(90deg, rgba(255, 77, 77, 0.15), rgba(0, 0, 0, 0.6));
+  }
+
+  /* Ειδικά χρώματα για LT */
+  .rank-lt {
+    color: #00d4ff;
+    border-left-color: #00d4ff;
+    box-shadow: -10px 0 15px -10px rgba(0, 212, 255, 0.5);
+    background: linear-gradient(90deg, rgba(0, 212, 255, 0.15), rgba(0, 0, 0, 0.6));
+  }
+
+  /* Διόρθωση κειμένου για να μην φαίνεται λοξό (αντίστροφο skew) */
+  .rank span, .rank {
+    display: inline-block;
+  }
+
+  /* Το κείμενο μέσα πρέπει να είναι ίσιο παρόλο που το badge είναι λοξό */
+  .rank {
+    text-align: center;
+  }
+
+  /* Hover Effect */
+  li:hover .rank {
+    transform: skewX(-15deg) scale(1.08);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  li:hover .rank-ht {
+    border-left-width: 8px; /* Μεγαλώνει το "νύχι" αριστερά */
+    color: #fff;
+    box-shadow: -15px 0 20px -5px rgba(255, 77, 77, 0.8);
+  }
+
+  li:hover .rank-lt {
+    border-left-width: 8px;
+    color: #fff;
+    box-shadow: -15px 0 20px -5px rgba(0, 212, 255, 0.8);
+  }
+
+  /* Shimmer/Scanline εφέ */
+  .rank::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+  }
+
+  li:hover .rank::before {
+    left: 100%;
+  }
+
+  /* Custom Χρώματα για κάθε H2 Τίτλο */
+  .title-mace    { color: #a020f0 !important; text-shadow: 0 0 15px rgba(160, 32, 240, 0.5); } /* Μοβ */
+  .title-sword   { color: #0077ff !important; text-shadow: 0 0 15px rgba(0, 119, 255, 0.5); } /* Blue */
+  .title-axe     { color: #00ffff !important; text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); } /* Cyan */
+  .title-smp     { color: #800080 !important; text-shadow: 0 0 15px rgba(128, 0, 128, 0.5); } /* Purple */
+  .title-pot     { color: #ffcc00 !important; text-shadow: 0 0 15px rgba(225, 215, 60, 0.5); } /* Red pros Purple (Crimson) */
+  .title-nethpot     { color: #dc143c !important; text-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } /* Red pros Purple (Crimson) */
+  .title-vanilla { color: #ff1493 !important; text-shadow: 0 0 15px rgba(255, 20, 147, 0.5); } /* Pink pros Purple (DeepPink) */
+  .title-uhc     { color: #ffd700 !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); } /* Gold */
+
+  /* Διόρθωση για να μην το χαλάει η JavaScript που φτιάχνει το div/wrapper */
+  .tierlists h2 div {
+    color: inherit; /* Παίρνει το χρώμα από το h2 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tierlists h2 img { border-radius: 50%; width: 50px; height: 50px; margin-right: 10px; }
+
+  /* ==========================================================================
+  8. PLAYER HOVER POPUP (TOOLTIP)
+  ========================================================================== */
+  .player-tooltip {
+    position: absolute;
+    background: #2c2c2c;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 9999;
+  }
+
+  .player-tooltip img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+  }
+
+  .player-tooltip span {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* ==========================================================================
+  9. EMOJIS & ICONS
+  ========================================================================== */
+  /* Emojis before items */
+  .tierlists li::before,
+  .leaderboard td::before,
+  li::before {
+    content: attr(data-emoji);
+    margin-right: 8px;
+    display: inline-block; /* ensures emoji visibility with flex */
+  }
+
+  /* Rules & sections */
+  .section { margin-bottom: 35px; }
+  p, li { font-size: 18px; line-height: 1.8; }
+  ul { padding-left: 20px; }
+
+  .highlight { color: var(--accent); font-weight: 700; }
+
+  /* Custom li icons */
+  .kit::before { content: "🛡️"; }
+  .rounds::before { content: "🎯"; }
+  .mcpvp::before { content: "🌐"; }
+  .health::before { content: "❤️"; }
+  .cheats::before { content: "🚫"; }
+  .challenge::before { content: "🔥"; }
+  .crown::before { content: "👑"; margin-right: 5px; }
+
+  /* ==========================================================================
+  10. KITS GRID
+  ========================================================================== */
+  .kits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .kit-card {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, opacity 0.18s;  
+    color: var(--text);
+  }
+
+  .kit-card img { width: 80px; height: 80px; margin-bottom: 15px; }
+  .kit-card h2 { color: var(--accent); margin-bottom: 8px; }
+  .rounds { margin-top: 10px; font-weight: 600; color: var(--accent-2); }
+
+  /* Kit color variants */
+  .sword { background-color: #1a2a40; border: 2px solid #00aaff; } 
+  .axe { background-color: #1a4040; border: 2px solid #00ffff; } 
+  .mace { background-color: #2a2a2a; border: 2px solid #a335ee; } 
+  .pot { background-color: #401a1a; border: 2px solid #ff4444; } 
+  .nethpot { background-color: #3b1a30; border: 2px solid #c71585; } 
+  .vanilla { background-color: #301a40; border: 2px solid #ff00ff; } 
+  .uhc { background-color: #40351a; border: 2px solid #ffcc00; } 
+  .smp { background-color: #2a1a40; border: 2px solid #9933ff; }
+
+  .kit-card:hover { transform: translateY(-5px); opacity: 0.95; }
+
+  /* ==========================================================================
+  11. FOOTER
+  ========================================================================== */
+  footer {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+    background-color: var(--panel);
+    color: var(--text);
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid var(--border);
+  }
+
+  footer a {
+    text-decoration: none;
+  }
+
+  footer p {
+    color: white; 
+    margin: 0; 
+    font-weight: 800; 
+    font-size: 18px;
+    letter-spacing: -0.5px; 
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .discord-icon {
+    height: 45px;
+    width: auto;
+    transition: transform 0.2s;
+  }
+
+  .mctiers-icon {
+    height: 30px;
+    width: auto;
+    transition: transform 0.2s;
+  }
+
+  .discord-icon:hover, .mctiers-icon:hover {
+    transform: scale(1.1);
+  }
+
+  /* ==========================================================================
+  12. FORM ELEMENTS (INPUTS/SELECTS)
+  ========================================================================== */
+  .tierlists input,
+  .tierlists select,
+  .tierlists textarea {
+    width: 100%;
+    padding: 12px 15px;
     background-color: var(--muted);
     color: var(--text);
-    margin: 5px 0;
-    padding: 12px 15px;
-    border-radius: 10px;
+    border: 2px solid var(--panel-dark);
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 500;
-    transition: background 0.2s, transform 0.2s;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 20px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+
+  .tierlists input:focus,
+  .tierlists select:focus,
+  .tierlists textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(255, 221, 0, 0.5);
+    background-color: var(--panel-dark);
+  }
+
+  .tierlists input:hover,
+  .tierlists select:hover,
+  .tierlists textarea:hover {
+    background-color: #3a3a3a;
+  }
+
+  .tierlists button {
+    margin-top: 10px;
+    padding: 14px;
+    background-color: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tierlists button:hover {
+    background-color: var(--accent-2);
+    transform: translateY(-2px);
+  }
+  .tierlist-display ul { list-style: none; padding: 0; margin-bottom: 30px; width: 100%; }
+
+  .tierlist-display li {
+      background-color: var(--muted);
+      color: var(--text);
+      margin: 5px 0;
+      padding: 12px 15px;
+      border-radius: 10px;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+  }
+
+  .tierlist-display li:hover { background-color: #555; transform: translateX(5px); }
+
+  .rank {
+    position: relative;
+    padding: 6px 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-left: auto;
+    transform: skewX(-15deg); 
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .rank-ht { color: #ff4d4d; border-left: 3px solid #ff4d4d; }
+  .rank-lt { color: #00d4ff; border-left: 3px solid #00d4ff; }
+  /* ==========================================================================
+  14. TIER NAVIGATION (TABS) - NEW SECTION
+  ========================================================================== */
+  .tier-navigation {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 15px 5px;
+    margin-bottom: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+  }
+
+  /* 1. Βασικό στυλ κουμπιών (Χωρίς grayscale) */
+  .tier-btn {
+    background: #2a2a2a;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: #ccc; /* Λίγο πιο ανοιχτό από πριν για να φαίνεται */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+
+  .tier-btn img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    /* Αφαιρέθηκε το grayscale - τα εικονίδια είναι πάντα έγχρωμα */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: all 0.3s ease;
+  }
+
+  /* 2. Κοινό Hover εφέ */
+  .tier-btn:hover {
+    background: #333;
+    transform: translateY(-3px);
+  }
+
+  /* 3. Χρώματα και Glow για Hover ΚΑΙ Active */
+
+  /* Mace */
+  .tier-btn[onclick*="maceTier"]:hover, 
+  .tier-btn[onclick*="maceTier"].active { 
+    color: #ffac33; border-color: #ffac33; box-shadow: 0 0 15px rgba(255, 172, 51, 0.4); 
+  }
+
+  /* Sword */
+  .tier-btn[onclick*="swordTier"]:hover, 
+  .tier-btn[onclick*="swordTier"].active { 
+    color: #55cdfc; border-color: #55cdfc; box-shadow: 0 0 15px rgba(85, 205, 252, 0.4); 
+  }
+
+  /* Axe */
+  .tier-btn[onclick*="axeTier"]:hover, 
+  .tier-btn[onclick*="axeTier"].active { 
+    color: #78bc44; border-color: #78bc44; box-shadow: 0 0 15px rgba(120, 188, 68, 0.4); 
+  }
+
+  /* SMP */
+  .tier-btn[onclick*="smpTier"]:hover, 
+  .tier-btn[onclick*="smpTier"].active { 
+    color: #ff77ff; border-color: #ff77ff; box-shadow: 0 0 15px rgba(255, 119, 255, 0.4); 
+  }
+
+  /* Pot */
+  .tier-btn[onclick*="potTier"]:hover, 
+  .tier-btn[onclick*="potTier"].active { 
+    color: #f26522; border-color: #f26522; box-shadow: 0 0 15px rgba(242, 101, 34, 0.4); 
+  }
+
+  /* NethPot */
+  .tier-btn[onclick*="nethPot"]:hover, 
+  .tier-btn[onclick*="nethPot"].active { 
+    color: #b794f4; border-color: #b794f4; box-shadow: 0 0 15px rgba(183, 148, 244, 0.4); 
+  }
+
+  /* Vanilla */
+  .tier-btn[onclick*="vanillaTier"]:hover, 
+  .tier-btn[onclick*="vanillaTier"].active { 
+    color: #ffff77; border-color: #ffff77; box-shadow: 0 0 15px rgba(255, 255, 119, 0.4); 
+  }
+
+  /* UHC */
+  .tier-btn[onclick*="uhcTier"]:hover, 
+  .tier-btn[onclick*="uhcTier"].active { 
+    color: #ff4d4d; border-color: #ff4d4d; box-shadow: 0 0 15px rgba(255, 77, 77, 0.4); 
+  }
+
+  /* Απόκρυψη/Εμφάνιση περιεχομένου */
+  .tier-content {
+    display: none;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .tier-content.active {
+    display: block;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==========================================================================
+  13. RESPONSIVE DESIGN (MEDIA QUERIES)
+  ========================================================================== */
+  @media (max-width: 900px) {
+    .container { padding: 20px; margin: 30px auto; max-width: 900px; }
+    footer { padding: 20px; font-size: 16px; }
+    .leaderboard td.name { font-size: 16px; }
+    .leaderboard td.points { font-size: 14px; }
+    .tierlists li { font-size: 18px; }
+  }
+
+  @media (max-width: 600px) {
+    nav .links a { font-size: 16px; }
+    .container { margin: 20px 12px; padding: 18px; border-radius: 12px; }
+    .tierlists li { flex-direction: row; justify-content: space-between; font-size: 16px; }
+    .leaderboard td { justify-content: flex-start; }
+    footer { flex-direction: column; text-align: center; padding: 20px 15px; font-size: 14px; }
+    .footer-links { margin-top: 15px; }
+    .leaderboard td.name { font-size: 14px; }
+    .leaderboard td.points { font-size: 12px; }
+  }
+
+  @media (max-width: 360px) {
+    nav img { height: 44px; }
+    .kit-card img { width: 64px; height: 64px; }
+  }
+
+  /* Container για το κουμπί */
+  .info-section-wrapper {
+    text-align: center;
+
+  }
+
+  .info-btn-static {
+    background: var(--panel-dark);
+    color: var(--text);
+    border: 2px solid var(--border);
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .info-btn-static:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
+  }
+
+  .info-icon {
+    background: var(--accent);
+    color: #000;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+  /* Modal Overlay */
+  .modal-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Modal Box */
+  .modal-box {
+    background: var(--panel);
+    margin: 8% auto;
+    padding: 30px;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    animation: popupAnim 0.3s ease-out;
+  }
+
+  @keyframes popupAnim {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    color: var(--border);
+    cursor: pointer;
+  }
+
+  .close-btn:hover { color: var(--accent); }
+
+  .modal-header h2 { color: var(--accent); margin-top: 0; }
+
+  .info-block { margin-top: 25px; }
+  .info-block h3 { color: var(--accent-2); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+
+  .pts-grid { margin-top: 15px; }
+  .pts-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .modal-skin-preview img {
+    animation: float 3s ease-in-out infinite;
 }
 
-.tierlists li::before {
-  content: attr(data-emoji); /* This pulls from the attribute JS adds */
-  margin-right: 10px;
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
-.tierlists li:hover { background-color: #555; transform: translateX(5px); }
-
-.rank {
-  position: relative;
-  padding: 6px 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-left: auto;
-  
-  /* Λοξό σχήμα */
-  transform: skewX(-15deg); 
-  background: rgba(0, 0, 0, 0.6); /* Σκούρο background για να "πετάει" το κείμενο */
-  margin-right: 16px;
-  border-right: 3px solid transparent;
-  border-left: 3px solid transparent;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  overflow: hidden;
+.player-modal-content h3 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
 }
-
-.pts {
-  background-color: rgba(0, 0, 0, 0.6); /* Χρυσό φόντο */
-  color: lightgray; /* Μαύρα γράμματα για αντίθεση */
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-weight: 800;
-  font-size: 14px;
-  min-width: 80px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  text-transform: uppercase;
-}
-
-.position-rank {
-  font-weight: 800;
-  margin-right: 8px;
-  min-width: 35px;
-  display: inline-block;
-  transition: all 0.3s ease; /* Ομαλή μετάβαση */
-  text-shadow: 0 0 0px transparent;
-}
-
-/* Όταν κάνεις hover στο li, το position-rank θα κάνει glow */
-.tier-content li:hover .position-rank {
-  text-shadow: 0 0 8px var(--rank-color); 
-  transform: scale(1.1); 
-  filter: brightness(1.2);
-} 
-
-/* Ειδικά χρώματα για HT */
-.rank-ht {
-  color: #ff4d4d;
-  border-left-color: #ff4d4d;
-  box-shadow: -10px 0 15px -10px rgba(255, 77, 77, 0.5);
-  background: linear-gradient(90deg, rgba(255, 77, 77, 0.15), rgba(0, 0, 0, 0.6));
-}
-
-/* Ειδικά χρώματα για LT */
-.rank-lt {
-  color: #00d4ff;
-  border-left-color: #00d4ff;
-  box-shadow: -10px 0 15px -10px rgba(0, 212, 255, 0.5);
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15), rgba(0, 0, 0, 0.6));
-}
-
-/* Διόρθωση κειμένου για να μην φαίνεται λοξό (αντίστροφο skew) */
-.rank span, .rank {
-  display: inline-block;
-}
-
-/* Το κείμενο μέσα πρέπει να είναι ίσιο παρόλο που το badge είναι λοξό */
-.rank {
-  text-align: center;
-}
-
-/* Hover Effect */
-li:hover .rank {
-  transform: skewX(-15deg) scale(1.08);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-li:hover .rank-ht {
-  border-left-width: 8px; /* Μεγαλώνει το "νύχι" αριστερά */
-  color: #fff;
-  box-shadow: -15px 0 20px -5px rgba(255, 77, 77, 0.8);
-}
-
-li:hover .rank-lt {
-  border-left-width: 8px;
-  color: #fff;
-  box-shadow: -15px 0 20px -5px rgba(0, 212, 255, 0.8);
-}
-
-/* Shimmer/Scanline εφέ */
-.rank::before {
-  content: "";
-  position: absolute;
+/* Full screen loader */
+#loader {
+  position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-  );
-  transition: 0.5s;
-}
-
-li:hover .rank::before {
-  left: 100%;
-}
-
-/* Custom Χρώματα για κάθε H2 Τίτλο */
-.title-mace    { color: #a020f0 !important; text-shadow: 0 0 15px rgba(160, 32, 240, 0.5); } /* Μοβ */
-.title-sword   { color: #0077ff !important; text-shadow: 0 0 15px rgba(0, 119, 255, 0.5); } /* Blue */
-.title-axe     { color: #00ffff !important; text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); } /* Cyan */
-.title-smp     { color: #800080 !important; text-shadow: 0 0 15px rgba(128, 0, 128, 0.5); } /* Purple */
-.title-pot     { color: #ffcc00 !important; text-shadow: 0 0 15px rgba(225, 215, 60, 0.5); } /* Red pros Purple (Crimson) */
-.title-nethpot     { color: #dc143c !important; text-shadow: 0 0 15px rgba(220, 20, 60, 0.5); } /* Red pros Purple (Crimson) */
-.title-vanilla { color: #ff1493 !important; text-shadow: 0 0 15px rgba(255, 20, 147, 0.5); } /* Pink pros Purple (DeepPink) */
-.title-uhc     { color: #ffd700 !important; text-shadow: 0 0 15px rgba(255, 215, 0, 0.5); } /* Gold */
-
-/* Διόρθωση για να μην το χαλάει η JavaScript που φτιάχνει το div/wrapper */
-.tierlists h2 div {
-  color: inherit; /* Παίρνει το χρώμα από το h2 */
+  background: #0a0a0a; /* Το χρώμα του background σου */
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-}
-.tierlists h2 img { border-radius: 50%; width: 50px; height: 50px; margin-right: 10px; }
-
-/* ==========================================================================
-8. PLAYER HOVER POPUP (TOOLTIP)
-========================================================================== */
-.player-tooltip {
-  position: absolute;
-  background: #2c2c2c;
-  border: 2px solid var(--accent);
-  border-radius: 12px;
-  padding: 10px 14px;
-  display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-  pointer-events: none;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  z-index: 9999;
+  z-index: 9999; /* Να είναι πάνω από όλα */
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 
-.player-tooltip img {
+/* Spinner animation */
+.spinner {
   width: 50px;
   height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid var(--accent); /* Το πορτοκαλί/γαλάζιο σου χρώμα */
   border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 8px rgba(0,0,0,0.6);
+  animation: spin 1s linear infinite;
 }
 
-.player-tooltip span {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--accent);
-  white-space: nowrap;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* ==========================================================================
-9. EMOJIS & ICONS
-========================================================================== */
-/* Emojis before items */
-.tierlists li::before,
-.leaderboard td::before,
-li::before {
-  content: attr(data-emoji);
-  margin-right: 8px;
-  display: inline-block; /* ensures emoji visibility with flex */
-}
-
-/* Rules & sections */
-.section { margin-bottom: 35px; }
-p, li { font-size: 18px; line-height: 1.8; }
-ul { padding-left: 20px; }
-
-.highlight { color: var(--accent); font-weight: 700; }
-
-/* Custom li icons */
-.kit::before { content: "🛡️"; }
-.rounds::before { content: "🎯"; }
-.mcpvp::before { content: "🌐"; }
-.health::before { content: "❤️"; }
-.cheats::before { content: "🚫"; }
-.challenge::before { content: "🔥"; }
-.crown::before { content: "👑"; margin-right: 5px; }
-
-/* ==========================================================================
-10. KITS GRID
-========================================================================== */
-.kits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.kit-card {
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.3s, opacity 0.18s;  
-  color: var(--text);
-}
-
-.kit-card img { width: 80px; height: 80px; margin-bottom: 15px; }
-.kit-card h2 { color: var(--accent); margin-bottom: 8px; }
-.rounds { margin-top: 10px; font-weight: 600; color: var(--accent-2); }
-
-/* Kit color variants */
-.sword { background-color: #1a2a40; border: 2px solid #00aaff; } 
-.axe { background-color: #1a4040; border: 2px solid #00ffff; } 
-.mace { background-color: #2a2a2a; border: 2px solid #a335ee; } 
-.pot { background-color: #401a1a; border: 2px solid #ff4444; } 
-.nethpot { background-color: #3b1a30; border: 2px solid #c71585; } 
-.vanilla { background-color: #301a40; border: 2px solid #ff00ff; } 
-.uhc { background-color: #40351a; border: 2px solid #ffcc00; } 
-.smp { background-color: #2a1a40; border: 2px solid #9933ff; }
-
-.kit-card:hover { transform: translateY(-5px); opacity: 0.95; }
-
-/* ==========================================================================
-11. FOOTER
-========================================================================== */
-footer {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  width: 100%;
-  padding: 20px 40px;
-  background-color: var(--panel);
-  color: var(--text);
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  border-top: 1px solid var(--border);
-}
-
-footer a {
-  text-decoration: none;
-}
-
-footer p {
-  color: white; 
-  margin: 0; 
-  font-weight: 800; 
-  font-size: 18px;
-  letter-spacing: -0.5px; 
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.discord-icon {
-  height: 45px;
-  width: auto;
-  transition: transform 0.2s;
-}
-
-.mctiers-icon {
-  height: 30px;
-  width: auto;
-  transition: transform 0.2s;
-}
-
-.discord-icon:hover, .mctiers-icon:hover {
-  transform: scale(1.1);
-}
-
-/* ==========================================================================
-12. FORM ELEMENTS (INPUTS/SELECTS)
-========================================================================== */
-.tierlists input,
-.tierlists select,
-.tierlists textarea {
-  width: 100%;
-  padding: 12px 15px;
-  background-color: var(--muted);
-  color: var(--text);
-  border: 2px solid var(--panel-dark);
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.tierlists input:focus,
-.tierlists select:focus,
-.tierlists textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 8px rgba(255, 221, 0, 0.5);
-  background-color: var(--panel-dark);
-}
-
-.tierlists input:hover,
-.tierlists select:hover,
-.tierlists textarea:hover {
-  background-color: #3a3a3a;
-}
-
-.tierlists button {
-  margin-top: 10px;
-  padding: 14px;
-  background-color: var(--accent);
-  color: var(--bg);
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tierlists button:hover {
-  background-color: var(--accent-2);
-  transform: translateY(-2px);
-}
-.tierlist-display ul { list-style: none; padding: 0; margin-bottom: 30px; width: 100%; }
-
-.tierlist-display li {
-    background-color: var(--muted);
-    color: var(--text);
-    margin: 5px 0;
-    padding: 12px 15px;
-    border-radius: 10px;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.2s;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.tierlist-display li:hover { background-color: #555; transform: translateX(5px); }
-
-.rank {
-  position: relative;
-  padding: 6px 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  font-size: 12px;
-  text-transform: uppercase;
-  margin-left: auto;
-  transform: skewX(-15deg); 
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.rank-ht { color: #ff4d4d; border-left: 3px solid #ff4d4d; }
-.rank-lt { color: #00d4ff; border-left: 3px solid #00d4ff; }
-/* ==========================================================================
-14. TIER NAVIGATION (TABS) - NEW SECTION
-========================================================================== */
-.tier-navigation {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 15px 5px;
-  margin-bottom: 20px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-}
-
-/* 1. Βασικό στυλ κουμπιών (Χωρίς grayscale) */
-.tier-btn {
-  background: #2a2a2a;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  padding: 12px 20px;
-  color: #ccc; /* Λίγο πιο ανοιχτό από πριν για να φαίνεται */
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 110px;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  font-size: 13px;
-}
-
-.tier-btn img {
-  width: 32px;
-  height: 32px;
-  margin-bottom: 8px;
-  /* Αφαιρέθηκε το grayscale - τα εικονίδια είναι πάντα έγχρωμα */
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-  transition: all 0.3s ease;
-}
-
-/* 2. Κοινό Hover εφέ */
-.tier-btn:hover {
-  background: #333;
-  transform: translateY(-3px);
-}
-
-/* 3. Χρώματα και Glow για Hover ΚΑΙ Active */
-
-/* Mace */
-.tier-btn[onclick*="maceTier"]:hover, 
-.tier-btn[onclick*="maceTier"].active { 
-  color: #ffac33; border-color: #ffac33; box-shadow: 0 0 15px rgba(255, 172, 51, 0.4); 
-}
-
-/* Sword */
-.tier-btn[onclick*="swordTier"]:hover, 
-.tier-btn[onclick*="swordTier"].active { 
-  color: #55cdfc; border-color: #55cdfc; box-shadow: 0 0 15px rgba(85, 205, 252, 0.4); 
-}
-
-/* Axe */
-.tier-btn[onclick*="axeTier"]:hover, 
-.tier-btn[onclick*="axeTier"].active { 
-  color: #78bc44; border-color: #78bc44; box-shadow: 0 0 15px rgba(120, 188, 68, 0.4); 
-}
-
-/* SMP */
-.tier-btn[onclick*="smpTier"]:hover, 
-.tier-btn[onclick*="smpTier"].active { 
-  color: #ff77ff; border-color: #ff77ff; box-shadow: 0 0 15px rgba(255, 119, 255, 0.4); 
-}
-
-/* Pot */
-.tier-btn[onclick*="potTier"]:hover, 
-.tier-btn[onclick*="potTier"].active { 
-  color: #f26522; border-color: #f26522; box-shadow: 0 0 15px rgba(242, 101, 34, 0.4); 
-}
-
-/* NethPot */
-.tier-btn[onclick*="nethPot"]:hover, 
-.tier-btn[onclick*="nethPot"].active { 
-  color: #b794f4; border-color: #b794f4; box-shadow: 0 0 15px rgba(183, 148, 244, 0.4); 
-}
-
-/* Vanilla */
-.tier-btn[onclick*="vanillaTier"]:hover, 
-.tier-btn[onclick*="vanillaTier"].active { 
-  color: #ffff77; border-color: #ffff77; box-shadow: 0 0 15px rgba(255, 255, 119, 0.4); 
-}
-
-/* UHC */
-.tier-btn[onclick*="uhcTier"]:hover, 
-.tier-btn[onclick*="uhcTier"].active { 
-  color: #ff4d4d; border-color: #ff4d4d; box-shadow: 0 0 15px rgba(255, 77, 77, 0.4); 
-}
-
-/* Απόκρυψη/Εμφάνιση περιεχομένου */
-.tier-content {
-  display: none;
-  animation: slideIn 0.3s ease-out;
-}
-
-.tier-content.active {
-  display: block;
-}
-
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ==========================================================================
-13. RESPONSIVE DESIGN (MEDIA QUERIES)
-========================================================================== */
-@media (max-width: 900px) {
-  .container { padding: 20px; margin: 30px auto; max-width: 900px; }
-  footer { padding: 20px; font-size: 16px; }
-  .leaderboard td.name { font-size: 16px; }
-  .leaderboard td.points { font-size: 14px; }
-  .tierlists li { font-size: 18px; }
-}
-
-@media (max-width: 600px) {
-  nav .links a { font-size: 16px; }
-  .container { margin: 20px 12px; padding: 18px; border-radius: 12px; }
-  .tierlists li { flex-direction: row; justify-content: space-between; font-size: 16px; }
-  .leaderboard td { justify-content: flex-start; }
-  footer { flex-direction: column; text-align: center; padding: 20px 15px; font-size: 14px; }
-  .footer-links { margin-top: 15px; }
-  .leaderboard td.name { font-size: 14px; }
-  .leaderboard td.points { font-size: 12px; }
-}
-
-@media (max-width: 360px) {
-  nav img { height: 44px; }
-  .kit-card img { width: 64px; height: 64px; }
-}
-
-/* Container για το κουμπί */
-.info-section-wrapper {
-  text-align: center;
-
-}
-
-.info-btn-static {
-  background: var(--panel-dark);
-  color: var(--text);
-  border: 2px solid var(--border);
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-}
-
-.info-btn-static:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
-}
-
-.info-icon {
-  background: var(--accent);
-  color: #000;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-}
-
-/* Modal Overlay */
-.modal-overlay {
-  display: none; 
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-}
-
-/* Modal Box */
-.modal-box {
-  background: var(--panel);
-  margin: 8% auto;
-  padding: 30px;
-  width: 100%;
-  max-width: 1000px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  animation: popupAnim 0.3s ease-out;
-}
-
-@keyframes popupAnim {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  font-size: 30px;
-  color: var(--border);
-  cursor: pointer;
-}
-
-.close-btn:hover { color: var(--accent); }
-
-.modal-header h2 { color: var(--accent); margin-top: 0; }
-
-.info-block { margin-top: 25px; }
-.info-block h3 { color: var(--accent-2); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-
-.pts-grid { margin-top: 15px; }
-.pts-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+/* Κλάση για να το κρύβουμε */
+#loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
 }

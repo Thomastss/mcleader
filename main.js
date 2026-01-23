@@ -68,43 +68,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (pData) {
                         li.style.color = pData.color || "#fff";
+                        li.style.cursor = "pointer"; // Κάνουμε το ποντίκι να φαίνεται clickable
+                        
                         const emoji = pData.emoji || '';
                         const point = index < pointsConfig.length ? pointsConfig[index] : defaultPoint;
                         
                         // Πρόσθεση πόντων στο συνολικό σκορ
                         scores[playerName] = (scores[playerName] || 0) + point;
-
+            
                         // Υπολογισμός Rank Text και Χρώματος
                         const rankNum = index + 1;
                         let rankText = "";
-                        let rankColor = "#a0a0a0"; // Default Gray για 4+
-
+                        let rankColor = "#a0a0a0"; 
+            
                         if (rankNum === 1) {
                             rankText = "1st";
-                            rankColor = "#FFD700"; // Gold
+                            rankColor = "#FFD700"; 
                         } else if (rankNum === 2) {
                             rankText = "2nd";
-                            rankColor = "#C0C0C0"; // Silver
+                            rankColor = "#C0C0C0"; 
                         } else if (rankNum === 3) {
                             rankText = "3rd";
-                            rankColor = "#CD7F32"; // Bronze
+                            rankColor = "#CD7F32"; 
                         } else {
                             rankText = `${rankNum}th`;
                         }
-
-                        // Δημιουργία HTML δομής li
-                        // Μέσα στο loop των tierlists, άλλαξε το li.innerHTML σε αυτό:
+            
                         li.innerHTML = `
-                        <span class="position-rank" style="--rank-color: ${rankColor}; color: ${rankColor};">
-                            ${rankText}
-                        </span>
-                        <span class="player-emoji">${emoji}</span>
-                        <span class="player-name-text">${playerName}</span>
-                        <span class="rank"></span>
-                        <span class="pts">${point} PTS</span>
+                            <span class="position-rank" style="--rank-color: ${rankColor}; color: ${rankColor};">
+                                ${rankText}
+                            </span>
+                            <span class="player-emoji">${emoji}</span>
+                            <span class="player-name-text">${playerName}</span>
+                            <span class="rank"></span>
+                            <span class="pts">${point} PTS</span>
                         `;
-
-                        // Τοποθέτηση του API Rank αν υπάρχει
+            
                         const rankSpan = li.querySelector('.rank');
                         if (pData.mctiersRanks && pData.mctiersRanks[id]) {
                             const rankInfo = pData.mctiersRanks[id];
@@ -114,6 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             `;
                             rankSpan.style.color = rankInfo.text.includes('HT') ? '#ff4d4d' : '#4da6ff';
                         }
+            
+                        // --- ΠΡΟΣΘΗΚΗ CLICK EVENT ---
+                        li.addEventListener('click', () => {
+                            // Χρησιμοποιούμε το score που έχει μαζέψει μέχρι στιγμής ο παίκτης
+                            const currentScore = scores[playerName] || 0;
+                            openPlayerModal(pData, currentScore);
+                        });
+                        // ----------------------------
                     }
                 });
             });
@@ -181,8 +188,163 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             `;
 
-            // Αφαιρέθηκε το event listener για το NameMC
+            tr.addEventListener('click', () => {
+                openPlayerModal(pData, score);
+            });
+
             tbody.appendChild(tr);
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.classList.add('fade-out');
+            }
         });
     });
+
+    window.openPlayerModal = function(pData, score) {
+        const modal = document.getElementById('infoModal');
+        const modalBody = modal.querySelector('.modal-body');
+        const modalHeader = modal.querySelector('.modal-header h2');
+    
+        // 1. Κατασκευή του Ranks Grid (Local vs API)
+        let ranksGridHtml = '';
+        
+        // Χρησιμοποιούμε το modeMap που όρισες στην αρχή του script σου
+        const modes = {
+            'maceTier': 'Mace',
+            'swordTier': 'Sword',
+            'axeTier': 'Axe',
+            'smpTier': 'SMP',
+            'potTier': 'Pot',
+            'nethPot': 'NethPot',
+            'vanillaTier': 'Vanilla',
+            'uhcTier': 'UHC'
+        };
+    
+        Object.keys(modes).forEach(id => {
+            const ul = document.getElementById(id);
+            if (!ul) return;
+            
+            const listItems = Array.from(ul.querySelectorAll('li'));
+            const playerPos = listItems.findIndex(li => li.querySelector('.player-name-text')?.innerText === pData.name);
+            const apiTierInfo = pData.mctiersRanks ? pData.mctiersRanks[id] : null;
+    
+            if (playerPos !== -1) {
+                const rankNum = playerPos + 1;
+                const isHT = apiTierInfo?.text.includes('HT');
+    
+                ranksGridHtml += `
+                    <div class="modal-mode-card" style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+                        <img src="img/tier/${id}.png" style="width: 24px; margin-bottom: 5px;">
+                        <div style="font-size: 10px; color: #888; text-transform: uppercase;">Local Rank</div>
+                        <div style="font-size: 18px; font-weight: 900; color: var(--accent);">#${rankNum}</div>
+                        
+                        <div style="margin: 8px 0; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+                        
+                        <div style="font-size: 10px; color: #888; text-transform: uppercase;">MCTiers</div>
+                        <div style="color: ${isHT ? '#ff4d4d' : '#00d4ff'}; font-weight: 800; font-size: 14px;">
+                            ${apiTierInfo ? apiTierInfo.text : 'N/A'}
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    
+        // 2. Update Header
+        modalHeader.innerHTML = `🛡️ Player Profile`;
+    
+        // 3. Generate HTML
+        modalBody.innerHTML = `
+            <div class="player-modal-content" style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; padding: 10px;">
+                
+                <div class="modal-left" style="flex: 0 0 200px; text-align: center;">
+                    <img src="https://visage.surgeplay.com/full/350/${pData.uuid}" alt="${pData.name}" 
+                         style="width: 100%; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); margin-bottom: 20px;">
+                    
+                    <a href="https://namemc.com/profile/${pData.uuid}" target="_blank" 
+                       style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #121212; color: white; text-decoration: none; padding: 10px; border-radius: 8px; border: 1px solid #333; font-weight: 700; transition: 0.2s;"
+                       onmouseover="this.style.background='#222'" onmouseout="this.style.background='#121212'">
+                       <img src="https://namemc.com/favicon.ico" style="width: 16px;"> View NameMC
+                    </a>
+                </div>
+                
+                <div class="modal-right" style="flex: 1; min-width: 300px;">
+                    <h3 style="color: ${pData.color || '#fff'}; font-size: 36px; margin-bottom: 5px; font-weight: 900;">
+                        ${pData.emoji || ''} ${pData.name}
+                    </h3>
+                    
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 6px; width: fit-content;">
+                        <span style="font-family: monospace; font-size: 12px; color: #aaa;">${pData.uuid}</span>
+                        <button onclick="navigator.clipboard.writeText('${pData.uuid}')" style="background:none; border:none; color:var(--accent); cursor:pointer; font-size:12px;" title="Copy UUID">📋</button>
+                    </div>
+    
+                    <div style="background: var(--panel-dark); padding: 15px; border-radius: 12px; border: 1px solid var(--accent); margin-bottom: 25px;">
+                        <span style="color: #888; text-transform: uppercase; font-size: 11px; font-weight: 700;">Total Leaderboard Points</span>
+                        <div style="font-size: 32px; font-weight: 900; color: var(--accent);">${score.toLocaleString()} <span style="font-size: 16px;">PTS</span></div>
+                    </div>
+                    
+                    <h4 style="color: #666; text-transform: uppercase; font-size: 12px; letter-spacing: 1.5px; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                        Mode Breakdown
+                    </h4>
+                    
+                    <div class="modal-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px;">
+                        ${ranksGridHtml || '<p style="opacity:0.5;">No active rankings found for this player.</p>'}
+                    </div>
+                </div>
+            </div>
+        `;
+    
+        modal.style.display = "block";
+    };
+    
+    // Κλείσιμο του modal όταν πατάει ο χρήστης το X ή έξω από αυτό
+    window.onclick = function(event) {
+        const modal = document.getElementById('infoModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    };
+
+    function showTier(tierId, btn) {
+        // Remove active from all buttons
+        document.querySelectorAll('.tier-btn').forEach(b => {
+            b.classList.remove('active');
+        });
+
+        // Hide all tier lists
+        document.querySelectorAll('.tier-content').forEach(list => {
+            list.classList.remove('active');
+        });
+
+        // Show selected tier
+        const selectedList = document.getElementById(tierId);
+        if (selectedList) {
+            selectedList.classList.add('active');
+        }
+
+        // Activate clicked button
+        btn.classList.add('active');
+    }
+
+
+    // Modal Functionality
+    const infoModal = document.getElementById("infoModal");
+    const infoBtn = document.getElementById("infoBtn");
+    const closeBtn = infoModal.querySelector(".close-btn");
+
+    // Άνοιγμα Popup
+    infoBtn.onclick = () => {
+        infoModal.style.display = "block";
+    }
+
+    // Κλείσιμο με το 'X'
+    closeBtn.onclick = () => {
+        infoModal.style.display = "none";
+    }
+
+    // Κλείσιμο αν πατήσεις οπουδήποτε έξω από το popup
+    window.onclick = (event) => {
+        if (event.target == infoModal) {
+            infoModal.style.display = "none";
+        }
+    }
 });
